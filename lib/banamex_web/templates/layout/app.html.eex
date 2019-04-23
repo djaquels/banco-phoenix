@@ -12,7 +12,13 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <%= if logged_in?(@conn) do %>
+        <span class="badge badge-dark mr-2"><%= current_user(@conn).username %></span>
+        <%= link "Logout", to: Routes.session_path(@conn, :delete), method: :delete, class: "btn btn-secondary" %>
+      <% else %>
+        <%= link "Login", to: Routes.session_path(@conn, :new), class: "btn btn-primary" %>
+        <%= link "Register", to: Routes.user_path(@conn, :new), class: "btn btn-secondary" %>
+      <% end %>
           </ul>
         </nav>
         <a href="/" class="phx-logo">

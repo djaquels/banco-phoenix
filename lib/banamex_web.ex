@@ -41,6 +41,7 @@ defmodule BanamexWeb do
 
       import BanamexWeb.ErrorHelpers
       import BanamexWeb.Gettext
+      import Banamex.Accounts.Auth, only: [current_user: 1, logged_in?: 1]
       alias BanamexWeb.Router.Helpers, as: Routes
     end
   end
