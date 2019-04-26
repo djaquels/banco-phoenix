@@ -1,0 +1,30 @@
+<h1>Listing Cajeros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Saldo</th>
+      <th>Retiro</th>
+      <th>Deposito</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for cajero <- @cajeros do %>
+    <tr>
+      <td><%= cajero.saldo %></td>
+      <td><%= cajero.retiro %></td>
+      <td><%= cajero.deposito %></td>
+
+      <td>
+        <%= link "Show", to: Routes.cajero_path(@conn, :show, cajero) %>
+        <%= link "Edit", to: Routes.cajero_path(@conn, :edit, cajero) %>
+        <%= link "Delete", to: Routes.cajero_path(@conn, :delete, cajero), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Cajero", to: Routes.cajero_path(@conn, :new) %></span>

@@ -1,0 +1,28 @@
+<h1>Listing Cuentas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Saldo</th>
+      <th>No cta</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for cuenta <- @cuentas do %>
+    <tr>
+      <td><%= cuenta.saldo %></td>
+      <td><%= cuenta.no_cta %></td>
+
+      <td>
+        <%= link "Show", to: Routes.cuenta_path(@conn, :show, cuenta) %>
+ 
+        <%= link "Delete", to: Routes.cuenta_path(@conn, :delete, cuenta), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Cuenta", to: Routes.cuenta_path(@conn, :new) %></span>

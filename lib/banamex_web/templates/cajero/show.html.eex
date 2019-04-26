@@ -1,0 +1,23 @@
+<h1>Show Cajero</h1>
+
+<ul>
+
+  <li>
+    <strong>Saldo:</strong>
+    <%= @cajero.saldo %>
+  </li>
+
+  <li>
+    <strong>Retiro:</strong>
+    <%= @cajero.retiro %>
+  </li>
+
+  <li>
+    <strong>Deposito:</strong>
+    <%= @cajero.deposito %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.cajero_path(@conn, :edit, @cajero) %></span>
+<span><%= link "Back", to: Routes.cajero_path(@conn, :index) %></span>

@@ -1,0 +1,18 @@
+<h1>Show Cuenta</h1>
+
+<ul>
+
+  <li>
+    <strong>Saldo:</strong>
+    <%= @cuenta.saldo %>
+  </li>
+
+  <li>
+    <strong>No cta:</strong>
+    <%= @cuenta.no_cta %>
+  </li>
+
+</ul>
+
+
+<span><%= link "Back", to: Routes.cuenta_path(@conn, :index) %></span>

@@ -7,7 +7,11 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :banamex, BanamexWeb.Endpoint,
-  http: [port: 4000],
+https: [port: 4443,
+         cipher_suite: :strong,
+         keyfile: "priv/cert/selfsigned_key.pem",
+         certfile: "priv/cert/selfsigned.pem"
+       ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -69,7 +73,7 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :banamex, Banamex.Repo,
   username: "postgres",
-  password: "zaitama1234",
+  password: "passwd",
   database: "banamex_dev",
   hostname: "localhost",
   pool_size: 10

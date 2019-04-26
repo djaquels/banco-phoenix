@@ -19,6 +19,10 @@ defmodule BanamexWeb.Router do
     post   "/login",  SessionController, :create
     delete "/logout", SessionController, :delete
     resources "/users", UserController
+    resources "/cuentas", CuentaController
+    resources "/cajeros", CajeroController
+    resources "/atm", AtmController 
+    resources "/call", CallCentersController
     get "/", PageController, :index
   end
 

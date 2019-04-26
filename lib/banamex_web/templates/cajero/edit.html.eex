@@ -1,0 +1,5 @@
+<h1>Edit Cajero</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.cajero_path(@conn, :update, @cajero)) %>
+
+<span><%= link "Back", to: Routes.cajero_path(@conn, :index) %></span>
