@@ -1,12 +1,17 @@
 defmodule BanamexWeb.CuentaController do
   use BanamexWeb, :controller
-
+  import Ecto.Query
+  import Ecto.Repo
   alias Banamex.Cuentas
   alias Banamex.Cuentas.Cuenta
 
   def index(conn, _params) do
-    cuentas = Cuentas.list_cuentas()
-    render(conn, "index.html", cuentas: cuentas)
+    current = Banamex.Accounts.Auth.current_user(conn)
+    c = from u in "cuentas",
+              where: u.user_id == ^current.id,
+              select: [u.saldo,u.no_cta]
+    cuenta = Banamex.Repo.all(c)
+    render(conn, "index.html", cuentas: cuenta, usuario: current)
   end
 
   def new(conn, _params) do
