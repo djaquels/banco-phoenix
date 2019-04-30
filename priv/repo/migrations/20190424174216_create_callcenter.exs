@@ -6,7 +6,7 @@ defmodule Banamex.Repo.Migrations.CreateCallcenter do
       add :NoCuenta, :integer
       add :Direccion, :string
       add :Telefono, :integer
-      add :user_id, references(:posts, on_delete: :nothing)
+      add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()
     end

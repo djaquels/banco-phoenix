@@ -13,6 +13,10 @@
   <%= email_input f, :email %>
   <%= error_tag f, :email %>
 
+  <%= label f, :telefono %>
+  <%= text_input f, :telefono %>
+  <%= error_tag f, :telefono %>
+
   <%= label f, :password %>
   <%= password_input f, :password %>
   <%= error_tag f, :password %>

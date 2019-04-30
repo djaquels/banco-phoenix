@@ -21,8 +21,8 @@ defmodule BanamexWeb.Router do
     resources "/users", UserController
     resources "/cuentas", CuentaController
     resources "/cajeros", CajeroController
-    resources "/atm", AtmController 
-    resources "/call", CallCentersController
+    resources "/atm", AtmController
+    resources "/call", CallCenterController
     get "/", PageController, :index
   end
 

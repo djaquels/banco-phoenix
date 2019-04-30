@@ -6,6 +6,7 @@ defmodule Banamex.Accounts.User do
     field :email, :string
     field :password_hash, :string
     field :username, :string
+    field :telefono, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
     timestamps()
@@ -14,8 +15,8 @@ defmodule Banamex.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :email, :password])
-    |> validate_required([:username, :email])
+    |> cast(attrs, [:username, :email, :password, :telefono])
+    |> validate_required([:username, :email, :telefono])
     |> validate_length(:password, min: 8)
     |> unique_constraint(:email)
     |> encrypt_password

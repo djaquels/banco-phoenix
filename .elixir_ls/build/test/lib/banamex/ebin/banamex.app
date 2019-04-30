@@ -19,6 +19,7 @@
                         'Elixir.BanamexWeb.CajeroController',
                         'Elixir.BanamexWeb.CajeroView',
                         'Elixir.BanamexWeb.CallCenterController',
+                        'Elixir.BanamexWeb.CallCenterView',
                         'Elixir.BanamexWeb.ChannelCase',
                         'Elixir.BanamexWeb.ConnCase',
                         'Elixir.BanamexWeb.CuentaController',
