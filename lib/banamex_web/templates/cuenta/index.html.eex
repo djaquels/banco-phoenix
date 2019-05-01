@@ -11,11 +11,12 @@
     </tr>
   </thead>
   <tbody>
-<% for cuenta <- @cuentas do %>
+<%= for [saldo,cuenta ]<- @cuentas do %>
     <tr>
       
-      <td><%= 1 %></td>
-
+      <td> <%= saldo %></td>
+      <td><%=  cuenta %></td>
+      
 
       <td>
         <%= link "Show", to: Routes.cuenta_path(@conn, :show, cuenta) %>
