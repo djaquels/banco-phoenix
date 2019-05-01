@@ -1,5 +1,6 @@
-<h1>Listing Cuentas</h1>
+<h1>Listing Cuentas de </h1>
 
+<%= @usuario.username %>
 <table>
   <thead>
     <tr>
@@ -10,10 +11,11 @@
     </tr>
   </thead>
   <tbody>
-<%= for cuenta <- @cuentas do %>
+<% for cuenta <- @cuentas do %>
     <tr>
-      <td><%= cuenta.saldo %></td>
-      <td><%= cuenta.no_cta %></td>
+      
+      <td><%= 1 %></td>
+
 
       <td>
         <%= link "Show", to: Routes.cuenta_path(@conn, :show, cuenta) %>

@@ -5,6 +5,7 @@
     <tr>
       <th>Username</th>
       <th>Email</th>
+      <th>Telefono</th>
       <th>Password hash</th>
 
       <th></th>
@@ -15,6 +16,7 @@
     <tr>
       <td><%= user.username %></td>
       <td><%= user.email %></td>
+      <td><%= user.telefono %></td>
       <td><%= user.password_hash %></td>
 
       <td>

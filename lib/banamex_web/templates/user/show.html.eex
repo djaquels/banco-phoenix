@@ -13,6 +13,10 @@
   </li>
 
   <li>
+    <strong>Telefono:</strong>
+    <%= @user.telefono %>
+  </li>
+  <li>
     <strong>Password hash:</strong>
     <%= @user.password_hash %>
   </li>
