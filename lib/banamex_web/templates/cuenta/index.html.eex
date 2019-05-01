@@ -11,10 +11,9 @@
     </tr>
   </thead>
   <tbody>
-<% for cuenta <- @cuentas do %>
-    <tr>
-      
-      <td><%= 1 %></td>
+<%= for cuenta <- @cuentas do %>
+    <tr>      
+      <td><%= cuenta.saldo %></td>
 
 
       <td>

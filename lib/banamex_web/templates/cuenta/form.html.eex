@@ -6,7 +6,7 @@
   <% end %>
 
   <%= label f, :saldo %>
-  <%= number_input f, :saldo, step: "any" %>
+  <%= number_input f, :step %>
   <%= error_tag f, :saldo %>
 
   <%= label f, :no_cta %>
