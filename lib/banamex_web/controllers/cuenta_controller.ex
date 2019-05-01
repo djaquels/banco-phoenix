@@ -6,12 +6,24 @@ defmodule BanamexWeb.CuentaController do
   alias Banamex.Cuentas.Cuenta
 
   def index(conn, _params) do
-    current = Banamex.Accounts.Auth.current_user(conn)
-    c = from u in "cuentas",
-              where: u.user_id == ^current.id,
-              select: [u.saldo,u.no_cta]
-    cuenta = Banamex.Repo.all(c)
-    render(conn, "index.html", cuentas: cuenta, usuario: current)
+    if Banamex.Accounts.Auth.logged_in?(conn) do
+      #cuenta = []
+      #cuentas = Cuentas.list_cuentas()
+      current = Banamex.Accounts.Auth.current_user(conn)
+      #for c <- cuentas do
+      #  if c.user_id == current.id do
+      #    cuenta = cuenta ++ [c]
+      #  end
+
+      #end
+      c = from u in "cuentas",
+                where: u.user_id == ^current.id,
+                select: [u.saldo,u.no_cta]
+      cuenta = Banamex.Repo.all(c)
+      render(conn, "index.html", cuentas: cuenta, usuario: current)
+    else
+      render(conn,"no_auth.html")
+    end
   end
 
   def new(conn, _params) do

@@ -3,9 +3,11 @@ defmodule BanamexWeb.CallCenterController do
 
   alias Banamex.CallCenters
   alias Banamex.CallCenters.CallCenter
+  alias Banamex.Accounts
+  alias Banamex.Accounts.User
 
   def index(conn, _params) do
-    callcenter = CallCenters.list_callcenter()
+    callcenter =  Accounts.list_users()
     render(conn, "index.html", callcenter: callcenter)
   end
 
