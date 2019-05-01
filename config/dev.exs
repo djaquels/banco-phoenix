@@ -73,7 +73,7 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :banamex, Banamex.Repo,
   username: "postgres",
-  password: "zaitama1234",
+  password: "passwd",
   database: "banamex_dev",
   hostname: "localhost",
   pool_size: 10
