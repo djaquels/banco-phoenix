@@ -9,6 +9,7 @@ defmodule Banamex.Accounts.User do
     field :telefono, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
+    field :tipo, :integer
     timestamps()
   end
 

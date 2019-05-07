@@ -11,23 +11,20 @@
     </tr>
   </thead>
   <tbody>
-<<<<<<< HEAD
-<%= for cuenta <- @cuentas do %>
-    <tr>      
-      <td><%= cuenta.saldo %></td>
 
-=======
+
+
 <%= for [saldo,cuenta ]<- @cuentas do %>
     <tr>
       
       <td> <%= saldo %></td>
       <td><%=  cuenta %></td>
       
->>>>>>> 76f81afb4a547246d04d907b4cccd1acb0ccf95b
+
 
       <td>
         <%= link "Show", to: Routes.cuenta_path(@conn, :show, cuenta) %>
- 
+      
         <%= link "Delete", to: Routes.cuenta_path(@conn, :delete, cuenta), method: :delete, data: [confirm: "Are you sure?"] %>
       </td>
     </tr>

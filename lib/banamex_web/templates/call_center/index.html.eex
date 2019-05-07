@@ -3,17 +3,19 @@
 <table>
   <thead>
     <tr>
-      <th>Username</th>
       <th>Telefono</th>
+      <th>Usuario</th>
+      
 
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for user <- @callcenter do %>
+<%= for [telefono,username ]<- @callcenter do %>
     <tr>
-      <td><%= user.username %></td>
-      <td><%= user.telefono %></td>
+      
+      <td> <%= telefono %></td>
+      <td><%=  username %></td>
     </tr>
 <% end %>
   </tbody>

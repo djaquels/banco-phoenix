@@ -1,15 +1,31 @@
 defmodule BanamexWeb.CallCenterController do
   use BanamexWeb, :controller
-
+  import Ecto.Query
+  import Ecto.Repo
   alias Banamex.CallCenters
   alias Banamex.CallCenters.CallCenter
   alias Banamex.Accounts
+  alias Banamex.Cuentas
+  alias Banamex.Cuentas.Cuenta
   alias Banamex.Accounts.User
 
   def index(conn, _params) do
-    callcenter =  Accounts.list_users()
-    render(conn, "index.html", callcenter: callcenter)
+    if Banamex.Accounts.Auth.logged_in?(conn) do
+      current = Banamex.Accounts.Auth.current_user(conn)
+      if (current.tipo == 1) do
+        c = from u in "users",
+                #where: u.id == ^current.id,
+                select: [u.telefono,u.username]
+        callcenter = Banamex.Repo.all(c)
+        render(conn, "index.html", callcenter: callcenter)
+      else
+        render(conn,"no_auth2.html")
+      end
+    else
+      render(conn,"no_auth.html")
+    end
   end
+
 
   def new(conn, _params) do
     changeset = CallCenters.change_call_center(%CallCenter{})
