@@ -4,10 +4,10 @@ defmodule BanamexWeb.CallCenterController do
   import Ecto.Repo
   alias Banamex.CallCenters
   alias Banamex.CallCenters.CallCenter
-  alias Banamex.Accounts
-  alias Banamex.Cuentas
-  alias Banamex.Cuentas.Cuenta
-  alias Banamex.Accounts.User
+  #alias Banamex.Accounts
+  #alias Banamex.Cuentas
+  #alias Banamex.Cuentas.Cuenta
+  #alias Banamex.Accounts.User
 
   def index(conn, _params) do
     if Banamex.Accounts.Auth.logged_in?(conn) do

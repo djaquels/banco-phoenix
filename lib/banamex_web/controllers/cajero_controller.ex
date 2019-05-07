@@ -1,12 +1,23 @@
 defmodule BanamexWeb.CajeroController do
   use BanamexWeb, :controller
-
+  import Ecto.Query
+  import Ecto.Repo
   alias Banamex.Cajeros
   alias Banamex.Cajeros.Cajero
 
   def index(conn, _params) do
-    cajeros = Cajeros.list_cajeros()
-    render(conn, "index.html", cajeros: cajeros)
+    if Banamex.Accounts.Auth.logged_in?(conn) do
+
+     # current = Banamex.Accounts.Auth.current_user(conn)
+
+      c = from u in "cajeros",
+               # where: u.user_id == ^current.id,
+                select: [u.saldo,u.retiro,u.deposito]
+      cajeros = Banamex.Repo.all(c)
+      render(conn, "index.html", cajeros: cajeros)
+    else
+      render(conn,"no_auth.html")
+    end
   end
 
   def new(conn, _params) do

@@ -11,18 +11,13 @@
     </tr>
   </thead>
   <tbody>
-<%= for cajero <- @cajeros do %>
+<%= for [saldo,retiro,deposito] <- @cajeros do %>
     <tr>
-      <td><%= cajero.saldo %></td>
-      <td><%= cajero.retiro %></td>
-      <td><%= cajero.deposito %></td>
+      <td><%=saldo %></td>
+      <td><%= retiro %></td>
+      <td><%= deposito %></td>
 
-      <td>
-        <%= link "Show", to: Routes.cajero_path(@conn, :show, cajero) %>
-        <%= link "Edit", to: Routes.cajero_path(@conn, :edit, cajero) %>
-        <%= link "Delete", to: Routes.cajero_path(@conn, :delete, cajero), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
-    </tr>
+     </tr>
 <% end %>
   </tbody>
 </table>
