@@ -20,6 +20,7 @@ defmodule BanamexWeb.Router do
     delete "/logout", SessionController, :delete
     resources "/users", UserController
     resources "/cuentas", CuentaController
+    get "/cuentas/transaction/:id" , CuentaController, :edit2
     resources "/cajeros", CajeroController
     resources "/atm", AtmController
     resources "/call", CallCenterController

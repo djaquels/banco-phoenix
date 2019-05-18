@@ -14,7 +14,7 @@
 
 
 
-<%= for [saldo,cuenta ]<- @cuentas do %>
+<%= for [saldo,cuenta,id ]<- @cuentas do %>
     <tr>
       
       <td> <%= saldo %></td>
@@ -23,9 +23,9 @@
 
 
       <td>
-        <%= link "Show", to: Routes.cuenta_path(@conn, :show, cuenta) %>
+        <%= link "Show", to: Routes.cuenta_path(@conn, :show, id) %>
       
-        <%= link "Delete", to: Routes.cuenta_path(@conn, :delete, cuenta), method: :delete, data: [confirm: "Are you sure?"] %>
+        <%= link "Delete", to: Routes.cuenta_path(@conn, :delete, id), method: :delete, data: [confirm: "Are you sure?"] %>
       </td>
     </tr>
 <% end %>

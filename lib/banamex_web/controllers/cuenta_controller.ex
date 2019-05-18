@@ -12,7 +12,7 @@ defmodule BanamexWeb.CuentaController do
 
       c = from u in "cuentas",
                 where: u.user_id == ^current.id,
-                select: [u.saldo,u.no_cta]
+                select: [u.saldo,u.no_cta,u.id]
       cuenta = Banamex.Repo.all(c)
       render(conn, "index.html", cuentas: cuenta, usuario: current)
     else
@@ -41,6 +41,11 @@ defmodule BanamexWeb.CuentaController do
   def show(conn, %{"id" => id}) do
     cuenta = Cuentas.get_cuenta!(id)
     render(conn, "show.html", cuenta: cuenta)
+  end
+  def edit2(conn, %{"id" => id}) do
+    cuenta = Cuentas.get_cuenta!(id)
+    changeset = Cuentas.change_cuenta(cuenta)
+    render(conn, "edit3.html", cuenta: cuenta, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
