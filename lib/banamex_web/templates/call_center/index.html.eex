@@ -5,17 +5,18 @@
     <tr>
       <th>Telefono</th>
       <th>Usuario</th>
-      
+      <th>id</th>  
 
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for [telefono,username ]<- @callcenter do %>
+<%= for [telefono,username,id ]<- @callcenter do %>
     <tr>
       
       <td> <%= telefono %></td>
       <td><%=  username %></td>
+      <td><%=  id %></td>
     </tr>
 <% end %>
   </tbody>

@@ -14,8 +14,8 @@
 <%= for [saldo,retiro,deposito] <- @cajeros do %>
     <tr>
       <td><%=saldo %></td>
-      <td><%= retiro %></td>
-      <td><%= deposito %></td>
+      <td><%= retiro=retiro-saldo %></td>
+      <td><%= deposito=deposito+saldo %></td>
 
      </tr>
 <% end %>

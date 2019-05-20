@@ -15,7 +15,7 @@ defmodule BanamexWeb.CallCenterController do
       if (current.tipo == 1) do
         c = from u in "users",
                 #where: u.id == ^current.id,
-                select: [u.telefono,u.username]
+                select: [u.telefono,u.username,u.id]
         callcenter = Banamex.Repo.all(c)
         render(conn, "index.html", callcenter: callcenter)
       else
