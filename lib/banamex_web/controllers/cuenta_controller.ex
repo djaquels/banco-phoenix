@@ -21,9 +21,18 @@ defmodule BanamexWeb.CuentaController do
   end
 
   def new(conn, _params) do
-    users = Banamex.Accounts.list_users()
-    changeset = Cuentas.change_cuenta(%Cuenta{})
-    render(conn, "new.html", changeset: changeset,users: users)
+    if Banamex.Accounts.Auth.logged_in?(conn) do
+      current = Banamex.Accounts.Auth.current_user(conn)
+      if (current.tipo == 1) do
+        users = Banamex.Accounts.list_users()
+        changeset = Cuentas.change_cuenta(%Cuenta{})
+        render(conn, "new.html", changeset: changeset,users: users)
+      else
+        render(conn,"no_auth2.html")
+      end
+    else
+      render(conn,"no_auth.html")
+    end
   end
 
   def create(conn, %{"cuenta" => cuenta_params}) do
@@ -56,7 +65,6 @@ defmodule BanamexWeb.CuentaController do
 
   def update(conn, %{"id" => id, "cuenta" => cuenta_params}) do
     cuenta = Cuentas.get_cuenta!(id)
-
     case Cuentas.update_cuenta(cuenta, cuenta_params) do
       {:ok, cuenta} ->
         conn

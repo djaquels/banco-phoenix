@@ -24,7 +24,7 @@ defmodule BanamexWeb.Router do
     resources "/cajeros", CajeroController
     resources "/atm", AtmController
     resources "/call", CallCenterController
-    get "/call/id/:id", CallCenterController, :show
+   # get "/call/id/:id", CallCenterController, :show
     get "/", PageController, :index
   end
 

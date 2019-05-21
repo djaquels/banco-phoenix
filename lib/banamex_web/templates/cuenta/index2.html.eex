@@ -7,6 +7,7 @@
     <tr>
       <th>Saldo</th>
       <th>No cta</th>
+
       <th></th>
     </tr>
   </thead>
@@ -19,7 +20,12 @@
       
       <td> <%= saldo %></td>
       <td><%=  cuenta %></td>
+      
 
+
+      <td>
+        <%= link "Transaccion", to: Routes.cuenta_path(@conn, :edit2, id) %>
+      </td>
     </tr>
 <% end %>
   </tbody>
@@ -28,10 +34,5 @@
 <section class="row">
   <article class="column">
   <a href="/"> Inicio</a>
-  </article>
-</section>
-<section class="row">
-  <article class="column">
-  <span><%= link "New Cuenta", to: Routes.cuenta_path(@conn, :new) %></span>
   </article>
 </section>

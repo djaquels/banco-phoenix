@@ -4,9 +4,10 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
+  <%= label f,:saldo %>
+  <%= @cuenta.saldo %>
   <%= label f, "Monto"%>
-  <%= number_input f,:saldo %>
-  
+  <%= number_input f,:monto %>
   <div>
     <%= submit "Retiro" %>
     <%= submit "Deposito" %>
