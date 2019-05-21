@@ -1,3 +1,11 @@
+<h1>
+Buscar usuario:
+<%= form_for @conn, "call/", [method: :get], fn f -> %>
+  <%= text_input f, :id, placeholder: "Search by title, content, etc." %>
+  <%= submit "Buscar" %>
+<% end %>
+
+</h1>
 <h1>Listing Users</h1>
 
 <table>

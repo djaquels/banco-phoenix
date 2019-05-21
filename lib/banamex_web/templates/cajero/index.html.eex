@@ -3,23 +3,26 @@
 <table>
   <thead>
     <tr>
-      <th>Saldo</th>
-      <th>Retiro</th>
-      <th>Deposito</th>
+      <th>Cuenta</th>
 
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for [saldo,retiro,deposito] <- @cajeros do %>
+<%= for [id,cta] <- @cajeros do %>
     <tr>
-      <td><%=saldo %></td>
-      <td><%= retiro=retiro-saldo %></td>
-      <td><%= deposito=deposito+saldo %></td>
-
+     
+      <td><%= cta%></td>
+       <td><%= link "Transacion", to:  Routes.cuenta_path(@conn, :edit2, id) %></td>
      </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Cajero", to: Routes.cajero_path(@conn, :new) %></span>
+<section class="row">
+  <article class="column">
+<h1> 
+  <a href="/"> Inicio</a>
+</h1>
+  </article>
+</section>

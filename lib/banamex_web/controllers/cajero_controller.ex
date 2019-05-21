@@ -8,11 +8,11 @@ defmodule BanamexWeb.CajeroController do
   def index(conn, _params) do
     if Banamex.Accounts.Auth.logged_in?(conn) do
 
-     # current = Banamex.Accounts.Auth.current_user(conn)
+     current = Banamex.Accounts.Auth.current_user(conn)
 
-      c = from u in "cajeros",
-               # where: u.user_id == ^current.id,
-                select: [u.saldo,u.retiro,u.deposito]
+      c = from u in "cuentas",
+                where: u.user_id == ^current.id,
+                select: [u.id,u.no_cta]
       cajeros = Banamex.Repo.all(c)
       render(conn, "index.html", cajeros: cajeros)
     else
