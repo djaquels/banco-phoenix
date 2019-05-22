@@ -1,0 +1,21 @@
+<h1>Show User</h1>
+
+<ul>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Telefono:</strong>
+    <%= @user.telefono %>
+  </li>
+
+
+</ul>

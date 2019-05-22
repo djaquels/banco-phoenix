@@ -1,32 +1,9 @@
-<h1>
-Buscar usuario:
-<%= form_for @conn, ":id/", [method: :get], fn f -> %>
-  <%= text_input f, M, placeholder: "Search by title, content, etc." %>
-  <%= submit "Buscar" %>
-<% end %>
 
-</h1>
-<h1>Listing Users</h1>
+  Buscar usuario:
+  <%= form_for @conn,"/call/", [method: :get,enforce_utf8: false], fn f -> %>
+   <%= text_input f,:"id", placeholder: "Search by title, content, etc." %>
+   <%= submit "Buscar" %>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Telefono</th>
-      <th>Usuario</th>
-      <th>id</th>  
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for [telefono,username,id ]<- @callcenter do %>
-    <tr>
-      
-      <td> <%= telefono %></td>
-      <td><%=  username %></td>
-      <td><%=  id %></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
 

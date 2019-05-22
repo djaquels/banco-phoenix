@@ -2,6 +2,7 @@ defmodule BanamexWeb.CuentaController do
   use BanamexWeb, :controller
   import Ecto.Query
   import Ecto.Repo
+  import Logger
   alias Banamex.Cuentas
   alias Banamex.Cuentas.Cuenta
 
@@ -63,19 +64,39 @@ defmodule BanamexWeb.CuentaController do
     render(conn, "edit.html", cuenta: cuenta, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "cuenta" => cuenta_params}) do
-    cuenta = Cuentas.get_cuenta!(id)
+
+  #
+#  def update(conn, %{"id" => id, "cuenta" => cuenta_params}) do
+#    cuenta = Cuentas.get_cuenta!(id)
+#    case Cuentas.update_cuenta(cuenta, cuenta_params) do
+#      {:ok, cuenta} ->
+#        conn
+#        |> put_flash(:info, "Cuenta updated successfully.")
+#        |> redirect(to: Routes.cuenta_path(conn, :show, cuenta))
+
+#      {:error, %Ecto.Changeset{} = changeset} ->
+#        render(conn, "edit.html", cuenta: cuenta, changeset: changeset)
+#    end
+ # end
+  
+ def update(conn, %{"id" => id, "cuenta" => cuenta_params}) do
+  cuenta = Cuentas.get_cuenta!(id)
+  Logger.info inspect(cuenta_params)
+  Logger.debug "#{inspect(cuenta_params[:monto])}"
+  if cuenta.saldo < 100 do
+    render(conn, "error.html", cuenta: cuenta)
+  else 
     case Cuentas.update_cuenta(cuenta, cuenta_params) do
-      {:ok, cuenta} ->
-        conn
-        |> put_flash(:info, "Cuenta updated successfully.")
-        |> redirect(to: Routes.cuenta_path(conn, :show, cuenta))
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", cuenta: cuenta, changeset: changeset)
-    end
+            {:ok, cuenta} ->
+              conn
+              |> put_flash(:info, "Cuenta updated successfully.")
+              |> redirect(to: Routes.cuenta_path(conn, :show, cuenta))
+      
+            {:error, %Ecto.Changeset{} = changeset} ->
+              render(conn, "edit.html", cuenta: cuenta, changeset: changeset)
+         end
   end
-
+end
   def delete(conn, %{"id" => id}) do
     cuenta = Cuentas.get_cuenta!(id)
     {:ok, _cuenta} = Cuentas.delete_cuenta(cuenta)

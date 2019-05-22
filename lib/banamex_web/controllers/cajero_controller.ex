@@ -49,16 +49,19 @@ defmodule BanamexWeb.CajeroController do
   end
 
   def update(conn, %{"id" => id, "cajero" => cajero_params}) do
-    cajero = Cajeros.get_cajero!(id)
-
-    case Cajeros.update_cajero(cajero, cajero_params) do
-      {:ok, cajero} ->
-        conn
-        |> put_flash(:info, "Cajero updated successfully.")
-        |> redirect(to: Routes.cajero_path(conn, :show, cajero))
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", cajero: cajero, changeset: changeset)
+    cajero = Banamex.Cuentas.get_cuenta!(id)
+    if cajero.saldo < 100 do
+      render(conn, "error.html", cajero: cajero)
+    else 
+      case Cajeros.update_cajero(cajero, cajero_params) do
+        {:ok, cajero} ->
+          conn
+          |> put_flash(:info, "Cajero updated successfully.")
+          |> redirect(to: Routes.cajero_path(conn, :show, cajero))
+  
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, "edit.html", cajero: cajero, changeset: changeset)
+      end
     end
   end
 

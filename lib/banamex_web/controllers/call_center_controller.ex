@@ -13,9 +13,8 @@ defmodule BanamexWeb.CallCenterController do
     if Banamex.Accounts.Auth.logged_in?(conn) do
       current = Banamex.Accounts.Auth.current_user(conn)
       if (current.tipo == 1) do
-        listar_usuario = M
         c = from u in "users",
-                where: u.id == ^listar_usuario,
+                #where: u.id == ^listar_usuario,
                 select: [u.telefono,u.username,u.id]
         callcenter = Banamex.Repo.all(c)
         render(conn, "index.html", callcenter: callcenter)
@@ -46,8 +45,8 @@ defmodule BanamexWeb.CallCenterController do
   end
 
   def show(conn, %{"id" => id}) do
-    call_center = CallCenters.get_call_center!(id)
-    render(conn, "show.html", call_center: call_center)
+    user = Banamex.Accounts.get_user!(id)
+    render(conn, "show.html", user: user)
   end
 
   def edit(conn, %{"id" => id}) do

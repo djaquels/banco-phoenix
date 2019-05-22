@@ -23,8 +23,8 @@ defmodule BanamexWeb.Router do
     get "/cuentas/transaction/:id" , CuentaController, :edit2
     resources "/cajeros", CajeroController
     resources "/atm", AtmController
+    get "/call/id=:id", CallCenterController, :show
     resources "/call", CallCenterController
-   # get "/call/id/:id", CallCenterController, :show
     get "/", PageController, :index
   end
 
