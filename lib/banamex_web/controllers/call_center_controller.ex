@@ -9,11 +9,11 @@ defmodule BanamexWeb.CallCenterController do
   #alias Banamex.Cuentas.Cuenta
   #alias Banamex.Accounts.User
   # 11 mañana del Jueves 30. Lab Abierto de Electronica
-  def index(conn, %{"id" => id}) do
+  def index(conn,_params) do
     if Banamex.Accounts.Auth.logged_in?(conn) do
       current = Banamex.Accounts.Auth.current_user(conn)
       if (current.tipo == 1) do
-        listar_usuario = id
+        listar_usuario = M
         c = from u in "users",
                 where: u.id == ^listar_usuario,
                 select: [u.telefono,u.username,u.id]

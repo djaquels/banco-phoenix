@@ -1,7 +1,7 @@
 <h1>
 Buscar usuario:
-<%= form_for @conn, "call/", [method: :get], fn f -> %>
-  <%= text_input f, :id, placeholder: "Search by title, content, etc." %>
+<%= form_for @conn, ":id/", [method: :get], fn f -> %>
+  <%= text_input f, M, placeholder: "Search by title, content, etc." %>
   <%= submit "Buscar" %>
 <% end %>
 
