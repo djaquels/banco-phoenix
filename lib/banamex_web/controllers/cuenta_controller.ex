@@ -83,7 +83,7 @@ defmodule BanamexWeb.CuentaController do
   cuenta = Cuentas.get_cuenta!(id)
   Logger.info inspect(cuenta_params)
   Logger.debug "#{inspect(cuenta_params[:monto])}"
-  if cuenta.saldo < 100 do
+  if cuenta.saldo < cuenta_params[:monto] do
     render(conn, "error.html", cuenta: cuenta)
   else 
     case Cuentas.update_cuenta(cuenta, cuenta_params) do

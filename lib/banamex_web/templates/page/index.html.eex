@@ -3,15 +3,19 @@
 </section>
 
 <section class="row">
-  <article class="column">
-<h1> 
-  <a href="/cuentas"> Cuenta</a>
-</h1>
-<h1> 
-  <a href="/cajeros"> Cajero</a>
-</h1>
-<h1> 
-  <a href="/call"> Call Center</a>
-</h1>
+<article class="column">
+  <h1> 
+    <a href="/users"> Usuario</a>
+  </h1>
+  <h1> 
+    <a href="/cuentas"> Cuentas</a>
+  </h1>
+  <h1> 
+    <a href="/cajeros"> Cajero</a>
+  </h1>
+  <h1> 
+    <a href="/call"> Call Center</a>
+  </h1>
+
   </article>
 </section>

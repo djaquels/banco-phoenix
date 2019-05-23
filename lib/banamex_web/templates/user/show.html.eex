@@ -1,6 +1,10 @@
 <h1>Show User</h1>
 
 <ul>
+  <li>
+    <strong>Identificador unico:</strong>
+    <%= @user.id %>
+  </li>
 
   <li>
     <strong>Username:</strong>
@@ -20,6 +24,7 @@
     <strong>Password hash:</strong>
     <%= @user.password_hash %>
   </li>
+
 
 </ul>
 

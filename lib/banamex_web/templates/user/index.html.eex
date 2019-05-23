@@ -3,30 +3,29 @@
 <table>
   <thead>
     <tr>
+      <th>Identificador</th>
       <th>Username</th>
       <th>Email</th>
       <th>Telefono</th>
-      <th>Password hash</th>
+      
 
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for user <- @users do %>
+<%= for [id,username,email,telefono] <- @users do %>
     <tr>
-      <td><%= user.username %></td>
-      <td><%= user.email %></td>
-      <td><%= user.telefono %></td>
-      <td><%= user.password_hash %></td>
-
-      <td>
-        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
-        <%= link "Edit", to: Routes.user_path(@conn, :edit, user) %>
-        <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
+      <td><%= id %></td>
+      <td><%= username %></td>
+      <td><%= email %></td>
+      <td><%= telefono %></td>
     </tr>
 <% end %>
   </tbody>
 </table>
+<section class="row">
+  <article class="column">
+  <a href="/"> Inicio</a>
+  </article>
+</section>
 
-<span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>

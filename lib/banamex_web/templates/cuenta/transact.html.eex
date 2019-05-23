@@ -5,7 +5,7 @@
     </div>
   <% end %>
   <%= label f,:saldo %>
-  <%= @cuenta.saldo %>
+  <%= @cuenta.saldo  %>
   <%= label f, "Monto"%>
   <%= number_input f,:monto %>
   <div>

@@ -1,9 +1,48 @@
-
-  Buscar usuario:
-  <%= form_for @conn,"/call/", [method: :get,enforce_utf8: false], fn f -> %>
-   <%= text_input f,:"id", placeholder: "Search by title, content, etc." %>
-   <%= submit "Buscar" %>
-  <% end %>
-
-
-
+<h1>
+  Seleccione el usuario:
+</h1>
+  <section class="row">
+  <article class="column">
+  <a href="/call/id=1"> Usuario 1</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=2"> Usuario 2</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=3"> Usuario 3</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=4"> Usuario 4</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=5"> Usuario 5</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=6"> Usuario 6</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=7"> Usuario 7</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=8"> Usuario 8</a>
+  </article>
+</section>
+<section class="row">
+  <article class="column">
+  <a href="/call/id=9"> Usuario 9</a>
+  </article>
+</section>

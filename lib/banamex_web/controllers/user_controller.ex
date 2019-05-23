@@ -1,17 +1,28 @@
 defmodule BanamexWeb.UserController do
   use BanamexWeb, :controller
-
+  import Ecto.Query
+  import Ecto.Repo
   alias Banamex.Accounts
   alias Banamex.Accounts.User
 
   def index(conn, _params) do
-    users = Accounts.list_users()
-    render(conn, "index.html", users: users)
+    if Banamex.Accounts.Auth.logged_in?(conn) do
+
+      current = Banamex.Accounts.Auth.current_user(conn)
+
+      c = from u in "users",
+                where: u.id == ^current.id,
+                select: [u.id,u.username,u.email,u.telefono]
+      user = Banamex.Repo.all(c)
+      render(conn, "index.html", users: user, usuario: current)
+    else
+      render(conn,"no_auth.html")
+    end
   end
 
   def new(conn, _params) do
-    changeset = Accounts.change_user(%User{})
-    render(conn, "new.html", changeset: changeset)
+      changeset = Accounts.change_user(%User{})
+      render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -27,7 +38,7 @@ defmodule BanamexWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Accounts.get_user(id)
+    user = Accounts.get_user!(id)
     render(conn, "show.html", user: user)
   end
 
